@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title> Print house </title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <script th:src="@{/js/script.js}"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+<header class="header-navigation">
+    <a th:href="@{'/colors/'}" class="btn btn-md btn-success">colors</a>
+    <a th:href="@{/dd}" class="btn btn-md btn-success">dd </a>
+</header>
+
+<div class="panel panel-group panel-primary" style="margin-top:40px">
+    <div class="panel-heading"> Register a new color</div>
+    <form th:action="@{'/colors/'}"
+          method="POST">
+        <input id="colorName" type="text" name="colorName" placeholder="nosaukums">
+        <button type="submit" class="registerbtn btn btn-md btn-warning">confirm</button>
+        <br><br>
+    </form>
+
+    <div class="panel-heading"> colors List</div>
+    <table class="table">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">color</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="color : ${colors}" class="table">
+            <th th:text="${color.id}" scope="col"></th>
+            <th th:text="${color.colorName}" scope="col"></th>
+
+            <td>
+                <form method="post"
+                      th:action="@{'/colors/'+ ${color.id}}"
+                      th:object="${color}"
+                      th:id="'myDIV' + ${color.id}">
+                    <input th:id="'colorName' + ${color.id}"
+                           type="text"
+                           name="colorName"
+                           style="display: none;"
+                           th:value="${color.colorName}">
+
+                    <input type="hidden" name="colorName">
+                    <button th:id="'sizeNameSave' + ${color.id}"
+                            type="submit"
+                            style="display: none;"
+                            class="registerbtn btn btn-md btn-danger"> save
+                    </button>
+                </form>
+            </td>
+
+            <td>
+                <form th:action="@{'/deleteColorRecord/'+ ${color.id}}"
+                      method="GET">
+                    <input type="hidden" name="id" th:value="${color.id}">
+                    <button type="submit" class="registerbtn btn btn-md btn-danger"> delete</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
