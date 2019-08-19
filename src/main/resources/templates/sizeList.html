@@ -12,7 +12,7 @@
 
 <body>
 <header class="header-navigation">
-    <a th:href="@{'/colors/'}" class="btn btn-md btn-success">colors</a>
+    <a th:href="@{'/colors/'}" class="btn btn-md btn-success">sizes</a>
     <a th:href="@{'/sizes/'}" class="btn btn-md btn-success">size</a>
     <a th:href="@{'/manufacturerArticles/'}" class="btn btn-md btn-success">manufacturer Articles</a>
     <a th:href="@{/firstProductChoice}" class="btn btn-md btn-success">NEW order (firstChoiceImage) </a>
@@ -20,42 +20,42 @@
 <!--common part end-->
 
 <div class="panel panel-group panel-primary" style="margin-top:40px">
-    <div class="panel-heading"> Register a new color</div>
-    <form th:action="@{'/colors/'}"
+    <div class="panel-heading"> Register a new size</div>
+    <form th:action="@{'/sizes/'}"
           method="POST">
-        <input id="colorName" type="text" name="colorName" placeholder="colorName">
+        <input id="sizeName" type="text" name="sizeName" placeholder="size Name">
         <button type="submit" class="registerbtn btn btn-md btn-warning">confirm</button>
         <br><br>
     </form>
 
-    <div class="panel-heading"> colors List</div>
+    <div class="panel-heading"> size List</div>
     <table class="table">
         <thead class="thead-light">
         <tr>
             <th scope="col">#</th>
-            <th scope="col">color</th>
+            <th scope="col">size</th>
             <th scope="col">Action</th>
         </tr>
         </thead>
 
         <tbody>
-        <tr th:each="color : ${colors}" class="table">
-            <th th:text="${color.id}" scope="col"></th>
-            <th th:text="${color.colorName}" scope="col"></th>
+        <tr th:each="size : ${sizes}" class="table">
+            <th th:text="${size.id}" scope="col"></th>
+            <th th:text="${size.sizeName}" scope="col"></th>
 
             <td>
                 <form method="post"
-                      th:action="@{'/colors/'+ ${color.id}}"
-                      th:object="${color}"
-                      th:id="'myDIV' + ${color.id}">
-                    <input th:id="'colorName' + ${color.id}"
+                      th:action="@{'/sizes/'+ ${size.id}}"
+                      th:object="${size}"
+                      th:id="'myDIV' + ${size.id}">
+                    <input th:id="'sizeName' + ${size.id}"
                            type="text"
-                           name="colorName"
+                           name="sizeName"
                            style="display: none;"
-                           th:value="${color.colorName}">
+                           th:value="${size.sizeName}">
 
-                    <input type="hidden" name="colorName">
-                    <button th:id="'sizeNameSave' + ${color.id}"
+                    <input type="hidden" name="sizeName">
+                    <button th:id="'sizeNameSave' + ${size.id}"
                             type="submit"
                             style="display: none;"
                             class="registerbtn btn btn-md btn-danger"> save
@@ -64,9 +64,9 @@
             </td>
 
             <td>
-                <form th:action="@{'/deleteColorRecord/'+ ${color.id}}"
+                <form th:action="@{'/deleteSizeRecord/'+ ${size.id}}"
                       method="GET">
-                    <input type="hidden" name="id" th:value="${color.id}">
+                    <input type="hidden" name="id" th:value="${size.id}">
                     <button type="submit" class="registerbtn btn btn-md btn-danger"> delete</button>
                 </form>
             </td>
