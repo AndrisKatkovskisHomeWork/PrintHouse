@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title> Print house </title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <script th:src="@{/js/script.js}"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+<header class="header-navigation">
+    <a th:href="@{'/colors/'}" class="btn btn-md btn-success">colors</a>
+    <a th:href="@{'/manufacturerArticles/'}" class="btn btn-md btn-success">manufacturer Articles</a>
+    <a th:href="@{/firstProductChoice}" class="btn btn-md btn-success">NEW order (first Choice Image) </a>
+</header>
+<!--common part end-->
+
+<div class="panel panel-group panel-primary" style="margin-top:40px">
+    <div class="panel-heading"> Register a new Manufacturer Article</div>
+    <form th:action="@{'/manufacturerArticles/'}"
+          method="post">
+
+        manufacturer <input type="text" id="name" name="manufacturerName" placeholder="manufacturer">
+        modelName <input type="text" name="modelName" placeholder="modelName">
+        modelNumber <input type="text" name="modelNumber" placeholder="modelNumber">
+
+        <button type="submit" class="registerbtn btn btn-md btn-warning">confirm</button>
+        <br><br>
+        <!--    <span th:if="${errorDeleteBicycle}" th:text="${errorDeleteBicycle}" class="alert alert-danger"></span>-->
+    </form>
+    <div class="panel-heading"> manufacturer Article List</div>
+
+    <table class="table">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col"> manufacturer Name</th>
+            <th scope="col"> model Name</th>
+            <th scope="col"> model Number</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="manufacturerArticle : ${manufacturerArticles}" class="table">
+            <th th:text="${manufacturerArticle.id}" scope="col"></th>
+            <th th:text="${manufacturerArticle.manufacturerName}" scope="col"></th>
+            <th th:text="${manufacturerArticle.modelName}" scope="col"></th>
+            <th th:text="${manufacturerArticle.modelNumber}" scope="col"></th>
+
+            <td>
+                <form th:action="@{'/deleteManufacturerArticleRecord/'+ ${manufacturerArticle.id}}"
+                      method="GET">
+                    <input id="id" type="hidden" name="id" th:value="${manufacturerArticle.id}">
+                    <button type="submit" class="registerbtn btn btn-md btn-danger"> delete</button>
+                </form>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+</div>
+</body>
+</html>
