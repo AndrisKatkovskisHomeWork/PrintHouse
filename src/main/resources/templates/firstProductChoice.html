@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title> Print house </title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <script th:src="@{/js/script.js}"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+<header class="header-navigation">
+    <a th:href="@{'/colors/'}" class="btn btn-md btn-success">colors</a>
+    <a th:href="@{'/manufacturerArticles/'}" class="btn btn-md btn-success">manufacturerArticles</a>
+    <a th:href="@{/firstProductChoice}" class="btn btn-md btn-success">NEW order (firstChoiceImage) </a>
+</header>
+<!--common part end-->
+
+<div class="panel panel-group panel-primary" style="margin-top:40px">
+
+<a th:href="@{/bookingList}"> <img th:src="@{/images/shirtPacked.jpg}" class="firstChoiceImage"/>   </a>
+    <a th:href="@{/bookingList}"> <img th:src="@{/images/packedAndPrint.jpg}" class="firstChoiceImage"/>  </a>
+   <br> <br>
+
+    <a th:href="@{/bookingList}"> <img th:src="@{/images/sewing.jpg}" class="firstChoiceImage"/>  </a>
+    <a th:href="@{/bookingList}"> <img th:src="@{/images/sewingAndPrint.jpg}" class="firstChoiceImage"/>  </a>
+
+
+
+
+
+
+
+
+</div>
+</body>
+</html>
