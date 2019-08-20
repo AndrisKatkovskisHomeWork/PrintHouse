@@ -20,13 +20,26 @@
 <!--common part end-->
 
 <div class="panel panel-group panel-primary" style="margin-top:40px">
+    <div class="panel-heading"> factory order (without print)</div>
 
-    <a th:href="@{'/orderFactoryList/'}"> <img th:src="@{/images/shirtPacked.jpg}" class="firstChoiceImage"/> </a>
-    <a th:href="@{'/orderFactoryList/'}"> <img th:src="@{/images/packedAndPrint.jpg}" class="firstChoiceImage"/> </a>
-    <br> <br>
+    <form th:action="@{'/orderFactoryList/'}"
+          th:object="${booking}"
+          method="post">
+        Manufacturer Article
+        <select th:field="*{manufacturerArticle}">
+            <option th:each="manufacturerArticle : ${manufacturerArticles}" th:value="${manufacturerArticle.id}"
+                    th:text="${manufacturerArticle.manufacturerName
+                    + ' - ' + manufacturerArticle.modelName
+                    + ' - ' + manufacturerArticle.modelNumber} ">
+            </option>
+        </select>
 
-    <a th:href="@{'/orderFactoryList/'}"> <img th:src="@{/images/sewing.jpg}" class="firstChoiceImage"/> </a>
-    <a th:href="@{'/orderFactoryList/'}"> <img th:src="@{/images/sewingAndPrint.jpg}" class="firstChoiceImage"/> </a>
+        <br>
+        </th:block>
+        <br>
+        <button type="submit" class="registerbtn btn btn-md btn-warning">confirm</button>
+        <br><br>
+    </form>
 
 
 </div>
