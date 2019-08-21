@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-7">
     <title> Print house </title>
 
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
@@ -13,7 +13,6 @@
 <body>
 <header class="header-navigation">
     <a th:href="@{'/colors/'}" class="btn btn-md btn-success">colors</a>
-    <a th:href="@{'/sizes/'}" class="btn btn-md btn-success">size</a>
     <a th:href="@{'/manufacturerArticles/'}" class="btn btn-md btn-success">manufacturer Articles</a>
     <a th:href="@{'/firstProductChoice/'}" class="btn btn-md btn-warning">NEW order (firstChoiceImage) </a>
 </header>
@@ -23,7 +22,7 @@
     <div class="panel-heading"> factory order (without print)</div>
 
     <form th:action="@{'/orderFactoryList/'}"
-          th:object="${booking}"
+          th:object="${bookingOrderFactoryOnly}"
           method="post">
         Manufacturer Article
         <select th:field="*{manufacturerArticle}">
@@ -34,13 +33,79 @@
             </option>
         </select>
 
-        <br>
-        </th:block>
+        Color
+        <select th:field="*{color}">
+            <option th:each="color : ${colors}" th:value="${color.id}"
+                    th:text="${color.colorName} ">
+            </option>
+        </select>
+        <br> <br>
+        &nbsp; &nbsp; &nbsp; menXS <input type="text" name="menXS" placeholder="XS" size="7"> &nbsp; &nbsp; &nbsp;
+        &nbsp; &nbsp; &nbsp; menS <input type="text" name="menS" placeholder="S" size="7"> &nbsp; &nbsp; &nbsp;
+        &nbsp; &nbsp; &nbsp; menM <input type="text" name="menM" placeholder="M" size="7"> &nbsp; &nbsp; &nbsp;
+        &nbsp; &nbsp; &nbsp; menL <input type="text" name="menL" placeholder="L" size="7"> &nbsp; &nbsp; &nbsp;
+        &nbsp; &nbsp; &nbsp; menXL <input type="text" name="menXL" placeholder="XL" size="7"> &nbsp; &nbsp; &nbsp;
+        &nbsp; &nbsp; &nbsp; menXXL <input type="text" name="menXXL" placeholder="XXL" size="7"> &nbsp; &nbsp; &nbsp;
+        &nbsp; &nbsp; &nbsp; menXXXL <input type="text" name="menXXXL" placeholder="XXXL" size="7"> &nbsp; &nbsp; &nbsp;
+        <br> <br>
+        womenXS <input type="text" name="womenXS" placeholder="XS" size="7"> &nbsp; &nbsp; &nbsp;
+        womenS <input type="text" name="womenS" placeholder="S" size="7"> &nbsp; &nbsp; &nbsp;
+        womenM <input type="text" name="womenM" placeholder="M" size="7"> &nbsp; &nbsp; &nbsp;
+        womenL <input type="text" name="womenL" placeholder="L" size="7"> &nbsp; &nbsp; &nbsp;
+        womenXL <input type="text" name="womenXL" placeholder="XL" size="7"> &nbsp; &nbsp; &nbsp;
+        womenXXL <input type="text" name="womenXXL" placeholder="XXL" size="7"> &nbsp; &nbsp; &nbsp;
+        womenXXXL <input type="text" name="womenXXXL" placeholder="XXXL" size="7"> &nbsp; &nbsp; &nbsp;
+        <br> <br>
+        &nbsp; &nbsp; &nbsp; &nbsp; kid 6 <input type="text" name="kid6" placeholder="kid6" size="7"> &nbsp; &nbsp;
+        &nbsp; &nbsp; &nbsp; &nbsp; kid 8 <input type="text" name="kid8" placeholder="kid8" size="7"> &nbsp; &nbsp;
+        &nbsp; &nbsp; &nbsp; &nbsp; kid 12 <input type="text" name="kid12" placeholder="kid12" size="7"> &nbsp; &nbsp;
         <br>
         <button type="submit" class="registerbtn btn btn-md btn-warning">confirm</button>
         <br><br>
     </form>
 
+
+    <div class="panel-heading"> order Factory List</div>
+    <table class="table">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">manufacturerArticle</th>
+            <th scope="col">colorName</th>
+            <th scope="col">sizes</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="b : ${orderFactorysList}" class="table">
+            <th th:text="${b.id}" scope="col"></th>
+            <th th:text="${b.manufacturerArticle.manufacturerName
+            + ' - ' + b.manufacturerArticle.modelName
+            + ' - ' + b.manufacturerArticle.modelNumber}" scope="col"></th>
+            <th th:text="${b.color.colorName}" scope="col"></th>
+            <th scope="col">
+                <th:block
+                        th:text="${'MEN: ' + b.menXS +'XS -'+ b.menS +'S -'+ b.menM +'M -'+ b.menL +'L -'+
+                         b.menXL +'XL -'+ b.menXXL +'XXL -'+ b.menXXXL +'XXXL'} +
+                         ${'/// WOMEN: ' + b.womenXS +'XS -'+ b.womenS +'S -'+ b.womenM +'M -'+ b.womenL +'L -'+
+                         b.womenXL +'XL -'+ b.womenXXL +'XXL -'+ b.womenXXXL +'XXXL'} +
+                         ${'/// KID: ' + b.kid6 +'kid6 -'+ b.kid8 +'kid8 -'+ b.kid12 +'kid12'}">
+
+                </th:block>
+            </th>
+
+            <td>
+                <form th:action="@{'/deleteOrderFactoryRecord/' + ${b.id}}"
+                      method="GET">
+                    <input type="hidden" name="id" th:value="${b.id}">
+                    <button type="submit" class="registerbtn btn btn-md btn-danger"> delete</button>
+                </form>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
 
 </div>
 </body>

@@ -2,7 +2,6 @@ package com.print.house.orderFactory;
 
 import com.print.house.color.ColorService;
 import com.print.house.manufacturerArticle.ManufacturerArticleService;
-import com.print.house.size.SizeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,16 +19,7 @@ public class OrderFactoryController {
     ColorService colorService;
 
     @Autowired
-    SizeService sizeService;
-
-    @Autowired
     ManufacturerArticleService manufacturerArticleService;
-
-
-//    @RequestMapping("/orderFactoryList")
-//    public String orderFactoryList() {
-//        return "orderFactoryList";
-//    }
 
     @RequestMapping(value = "/orderFactoryList", method = RequestMethod.GET)
     public String getAllOrderFactorys(Model model) {
@@ -41,8 +31,7 @@ public class OrderFactoryController {
     private void colorManufacturerArticlesSizes(Model model) {
         model.addAttribute("colors", this.colorService.getAllColors());
         model.addAttribute("manufacturerArticles", this.manufacturerArticleService.getAllManufacturerArticles());
-        model.addAttribute("sizes", this.sizeService.getAllSizes());
-        model.addAttribute("booking", new OrderFactory());
+        model.addAttribute("bookingOrderFactoryOnly", new OrderFactory());
     }
 
     @RequestMapping(value = "/orderFactoryList", method = RequestMethod.POST)
@@ -52,7 +41,6 @@ public class OrderFactoryController {
         model.addAttribute("orderFactorysList", orderFactoryService.getAllOrderFactorys());
         return "orderFactoryList";
     }
-
 
     @RequestMapping(value = "/deleteOrderFactoryRecord/{id}", method = RequestMethod.GET)
     public String deleteOrderFactory(@PathVariable int id) {
