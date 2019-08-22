@@ -32,7 +32,7 @@
 
         Day delivery
         <input id="dayDelivery" type="date" name="dayDelivery"
-               th:attr="min=${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"> <br>
+               th:attr="min=${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"> <br> <br>
 
         Manufacturer Article
         <select th:field="*{manufacturerArticle}">
@@ -69,6 +69,10 @@
         &nbsp; &nbsp; &nbsp; &nbsp; kid 6 <input type="text" name="kid6" placeholder="kid6" size="7"> &nbsp; &nbsp;
         &nbsp; &nbsp; &nbsp; &nbsp; kid 8 <input type="text" name="kid8" placeholder="kid8" size="7"> &nbsp; &nbsp;
         &nbsp; &nbsp; &nbsp; &nbsp; kid 12 <input type="text" name="kid12" placeholder="kid12" size="7"> &nbsp; &nbsp;
+        <br> <br>
+
+        <textarea rows="4" cols="50" name="commentField"> Place for additional comments...</textarea>
+
         <br>
         <button type="submit" class="registerbtn btn btn-md btn-warning">confirm</button>
         <br><br>
@@ -85,6 +89,7 @@
             <th scope="col">manufacturerArticle</th>
             <th scope="col">colorName</th>
             <th scope="col">sizes</th>
+            <th scope="col">comment</th>
             <th scope="col">Action</th>
         </tr>
         </thead>
@@ -109,6 +114,8 @@
 
                 </th:block>
             </th>
+
+            <th th:text="${b.commentField}" scope="col"></th>
 
             <td>
                 <form th:action="@{'/deleteOrderFactoryRecord/' + ${b.id}}"

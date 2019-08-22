@@ -52,6 +52,8 @@ public class OrderFactory {
     @Column(name = "day_delivery")
     private Date dayDelivery;
 
+    private String commentField; // by default, the maximum is 255 characters
+
 //    private String email;
 
 
@@ -232,5 +234,13 @@ public class OrderFactory {
 
     public void setDayDelivery(Date dayDelivery) {
         this.dayDelivery = dayDelivery;
+    }
+
+    public String getCommentField() {
+        return commentField;
+    }
+
+    public void setCommentField(String commentField) {
+        this.commentField = commentField;
     }
 }
