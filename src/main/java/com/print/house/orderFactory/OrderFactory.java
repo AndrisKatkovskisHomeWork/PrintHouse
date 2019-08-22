@@ -2,8 +2,10 @@ package com.print.house.orderFactory;
 
 import com.print.house.color.Color;
 import com.print.house.manufacturerArticle.ManufacturerArticle;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 public class OrderFactory {
@@ -41,6 +43,14 @@ public class OrderFactory {
     private String womenXL;
     private String womenXXL;
     private String womenXXXL;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(name = "day_ordering")
+    private Date dayOrdering;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(name = "day_delivery")
+    private Date dayDelivery;
 
 //    private String email;
 
@@ -206,5 +216,21 @@ public class OrderFactory {
 
     public void setWomenXXXL(String womenXXXL) {
         this.womenXXXL = womenXXXL;
+    }
+
+    public Date getDayOrdering() {
+        return dayOrdering;
+    }
+
+    public void setDayOrdering(Date dayOrdering) {
+        this.dayOrdering = dayOrdering;
+    }
+
+    public Date getDayDelivery() {
+        return dayDelivery;
+    }
+
+    public void setDayDelivery(Date dayDelivery) {
+        this.dayDelivery = dayDelivery;
     }
 }

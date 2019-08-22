@@ -24,6 +24,16 @@
     <form th:action="@{'/orderFactoryList/'}"
           th:object="${bookingOrderFactoryOnly}"
           method="post">
+
+
+        Ordering day
+        <input id="dayOrdering" type="date" name="dayOrdering"
+               th:attr="min=${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"> &nbsp; &nbsp; &nbsp;
+
+        Day delivery
+        <input id="dayDelivery" type="date" name="dayDelivery"
+               th:attr="min=${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"> <br>
+
         Manufacturer Article
         <select th:field="*{manufacturerArticle}">
             <option th:each="manufacturerArticle : ${manufacturerArticles}" th:value="${manufacturerArticle.id}"
@@ -70,6 +80,8 @@
         <thead class="thead-light">
         <tr>
             <th scope="col">#</th>
+            <th scope="col">dayOrdering</th>
+            <th scope="col">dayDelivery</th>
             <th scope="col">manufacturerArticle</th>
             <th scope="col">colorName</th>
             <th scope="col">sizes</th>
@@ -80,6 +92,9 @@
         <tbody>
         <tr th:each="b : ${orderFactorysList}" class="table">
             <th th:text="${b.id}" scope="col"></th>
+            <th th:text="${#dates.format(b.dayOrdering, 'dd-MM-yyy')}" scope="col"></th>
+            <th th:text="${#dates.format(b.dayDelivery, 'dd-MM-yyy')}" scope="col"></th>
+
             <th th:text="${b.manufacturerArticle.manufacturerName
             + ' - ' + b.manufacturerArticle.modelName
             + ' - ' + b.manufacturerArticle.modelNumber}" scope="col"></th>
