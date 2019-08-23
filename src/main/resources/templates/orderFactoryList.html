@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns="http://www.w3.org/1999/xhtml">
+      xmlns="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-7">
+    <meta charset="UTF-8">
     <title> Print house </title>
 
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
@@ -12,9 +12,19 @@
 
 <body>
 <header class="header-navigation">
+
+    <a th:href="@{/firstProductChoice}"> <img sec:authorize="isAuthenticated()" th:src="@{/images/shirtPacked.jpg}"
+                                              class="imageHeader"/></a>
+    <a th:href="@{/}"> <img sec:authorize="!isAuthenticated()" th:src="@{/images/sewing.jpg}"
+                            class="imageLogin"/></a><br>
+
     <a th:href="@{'/colors/'}" class="btn btn-md btn-success">colors</a>
     <a th:href="@{'/manufacturerArticles/'}" class="btn btn-md btn-success">manufacturer Articles</a>
     <a th:href="@{'/firstProductChoice/'}" class="btn btn-md btn-warning">NEW order (firstChoiceImage) </a>
+
+    <a sec:authorize="isAuthenticated()" th:href="@{/logout}" class="btn-right btn btn-md btn-danger">Logout</a>
+    <a sec:authorize="!isAuthenticated()" th:href="@{/registration}" class="btn-right btn btn-md btn-warning">Register</a>
+    <a sec:authorize="!isAuthenticated()" th:href="@{/}" class="btn-right btn btn-md btn-warning">login</a>
 </header>
 <!--common part end-->
 

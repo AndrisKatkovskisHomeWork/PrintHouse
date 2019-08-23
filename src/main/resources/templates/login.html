@@ -28,16 +28,28 @@
 </header>
 <!--common part end-->
 
-<div class="panel panel-group panel-primary" style="margin-top:40px">
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
 
-    <a th:href="@{'/orderFactoryList/'}"> <img th:src="@{/images/shirtPacked.jpg}" class="firstChoiceImage"/> </a>
-    <a th:href="@{'/orderFactoryList/'}"> <img th:src="@{/images/packedAndPrint.jpg}" class="firstChoiceImage"/> </a>
-    <br> <br>
+            <form th:action="@{/login}" method="POST" class="form-horizontal form-signIn">
+                <h3 class="form-signIn-heading" th:text="Sveicināti"></h3>
+                <br/>
 
-    <a th:href="@{'/orderFactoryList/'}"> <img th:src="@{/images/sewing.jpg}" class="firstChoiceImage"/> </a>
-    <a th:href="@{'/orderFactoryList/'}"> <img th:src="@{/images/sewingAndPrint.jpg}" class="firstChoiceImage"/> </a>
+                <input type="text" id="email" name="email" th:placeholder="e-pasts"
+                       class="form-control"/> <br/>
+                <input type="password" th:placeholder="parole"
+                       id="password" name="password" class="form-control"/> <br/>
 
-
+                <div align="center" th:if="${param.error}">
+                    <p class="validation-message">Nepareizs e-pasts / parole! Lūdzu, mēģiniet vēlreiz!</p>
+                </div>
+                <button class="btn btn-primary btn-block" name="Submit" value="Login" type="Submit"
+                        th:text="Ienākt"></button>
+            </form>
+        </div>
+    </div>
 </div>
+
 </body>
 </html>

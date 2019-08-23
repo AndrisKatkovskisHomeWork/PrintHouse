@@ -34,7 +34,7 @@ public class UserService {
         user.setActive(1);
         Role userRole = new Role();
 //        userRole.setId(2);
-//        userRole.setRole("USER");
+        userRole.setRole("USER");
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
         return userRepository.save(user);
     }

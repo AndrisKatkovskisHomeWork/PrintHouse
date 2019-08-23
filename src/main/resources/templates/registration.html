@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title> Print house </title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <script th:src="@{/js/script.js}"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+<header class="header-navigation">
+
+    <a th:href="@{/firstProductChoice}"> <img sec:authorize="isAuthenticated()" th:src="@{/images/shirtPacked.jpg}"
+                                       class="imageHeader"/></a>
+    <a th:href="@{/}"> <img sec:authorize="!isAuthenticated()" th:src="@{/images/sewing.jpg}"
+                            class="imageLogin"/></a><br>
+
+    <a th:href="@{'/colors/'}" class="btn btn-md btn-success">colors</a>
+    <a th:href="@{'/manufacturerArticles/'}" class="btn btn-md btn-success">manufacturer Articles</a>
+    <a th:href="@{'/firstProductChoice/'}" class="btn btn-md btn-warning">NEW order (firstChoiceImage) </a>
+
+    <a sec:authorize="isAuthenticated()" th:href="@{/logout}" class="btn-right btn btn-md btn-danger">Logout</a>
+    <a sec:authorize="!isAuthenticated()" th:href="@{/registration}" class="btn-right btn btn-md btn-warning">Register</a>
+    <a sec:authorize="!isAuthenticated()" th:href="@{/}" class="btn-right btn btn-md btn-warning">login</a>
+</header>
+<!--common part end-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+
+            <form autocomplete="off" action="#" th:action="@{/registration}"
+                  th:object="${user}" method="post" class="form-horizontal form-signIn"
+                  role="form">
+                <h3 class="form-signIn-heading" th:text="Reģistrācija"></h3>
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <input type="text" th:field="*{name}" placeholder="vārds"
+                               class="form-control"/>
+                        <label th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+                               class="validation-message"></label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <input type="text" th:field="*{lastName}"
+                               placeholder="uzvārds" class="form-control"/>
+                        <label th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
+                               class="validation-message"></label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <input type="text" th:field="*{email}" placeholder="e-pasts"
+                                class="form-control"/> <label
+                                th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+                                class="validation-message"></label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <input type="password" th:field="*{password}"
+                                placeholder="parole" class="form-control"/> <label
+                                th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+                                class="validation-message"></label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <button type="submit" class="btn btn-primary btn-block">Reģistrēt jaunu lietotāju
+                        </button>
+                    </div>
+                </div>
+
+                <h2><span class="text-success" th:utext="${successMessage}"></span></h2>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
