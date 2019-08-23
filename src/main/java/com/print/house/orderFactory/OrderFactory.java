@@ -54,7 +54,7 @@ public class OrderFactory {
 
     private String commentField; // by default, the maximum is 255 characters
 
-//    private String email;
+    private String email;
 
 
     public OrderFactory() {
@@ -242,5 +242,13 @@ public class OrderFactory {
 
     public void setCommentField(String commentField) {
         this.commentField = commentField;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

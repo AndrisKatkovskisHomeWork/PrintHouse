@@ -1,6 +1,7 @@
 package com.print.house.orderFactory;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ public class OrderFactoryService {
     }
 
     public void addOrderFactory(OrderFactory orderFactory) {
+        orderFactory.setEmail(SecurityContextHolder.getContext().getAuthentication().getName());
         orderFactoryRepository.save(orderFactory);
     }
 

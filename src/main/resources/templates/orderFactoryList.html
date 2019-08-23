@@ -100,6 +100,7 @@
             <th scope="col">colorName</th>
             <th scope="col">sizes</th>
             <th scope="col">comment</th>
+            <th scope="col">user</th>
             <th scope="col">Action</th>
         </tr>
         </thead>
@@ -126,6 +127,7 @@
             </th>
 
             <th th:text="${b.commentField}" scope="col"></th>
+            <th th:text="${b.email}" scope="col"></th>
 
             <td>
                 <form th:action="@{'/deleteOrderFactoryRecord/' + ${b.id}}"
