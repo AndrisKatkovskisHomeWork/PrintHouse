@@ -1,7 +1,5 @@
-package com.print.house.manufacturerArticle;
+package com.print.house.manufacturerarticle;
 
-import com.print.house.manufacturerArticle.ManufacturerArticle;
-import com.print.house.manufacturerArticle.ManufacturerArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

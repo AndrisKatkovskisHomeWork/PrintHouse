@@ -1,4 +1,4 @@
-package com.print.house.loginPart.model;
+package com.print.house.loginpart.model;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

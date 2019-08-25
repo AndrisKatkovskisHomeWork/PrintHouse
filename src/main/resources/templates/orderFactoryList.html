@@ -23,7 +23,8 @@
     <a th:href="@{'/firstProductChoice/'}" class="btn btn-md btn-warning">NEW order (firstChoiceImage) </a>
 
     <a sec:authorize="isAuthenticated()" th:href="@{/logout}" class="btn-right btn btn-md btn-danger">Logout</a>
-    <a sec:authorize="!isAuthenticated()" th:href="@{/registration}" class="btn-right btn btn-md btn-warning">Register</a>
+    <a sec:authorize="!isAuthenticated()" th:href="@{/registration}"
+       class="btn-right btn btn-md btn-warning">Register</a>
     <a sec:authorize="!isAuthenticated()" th:href="@{/}" class="btn-right btn btn-md btn-warning">login</a>
 </header>
 <!--common part end-->
@@ -60,13 +61,13 @@
             </option>
         </select>
         <br> <br> <strong> MEN </strong> &nbsp; &nbsp; &nbsp;
-         XS <input type="text" name="menXS" placeholder="XS" size="7"> &nbsp; &nbsp; &nbsp;
+        XS <input type="text" name="menXS" placeholder="XS" size="7"> &nbsp; &nbsp; &nbsp;
         S <input type="text" name="menS" placeholder="S" size="7"> &nbsp; &nbsp; &nbsp;
-         M <input type="text" name="menM" placeholder="M" size="7"> &nbsp; &nbsp; &nbsp;
-         L <input type="text" name="menL" placeholder="L" size="7"> &nbsp; &nbsp; &nbsp;
-         XL <input type="text" name="menXL" placeholder="XL" size="7"> &nbsp; &nbsp; &nbsp;
-         XXL <input type="text" name="menXXL" placeholder="XXL" size="7"> &nbsp; &nbsp; &nbsp;
-         XXXL <input type="text" name="menXXXL" placeholder="XXXL" size="7"> &nbsp; &nbsp; &nbsp;
+        M <input type="text" name="menM" placeholder="M" size="7"> &nbsp; &nbsp; &nbsp;
+        L <input type="text" name="menL" placeholder="L" size="7"> &nbsp; &nbsp; &nbsp;
+        XL <input type="text" name="menXL" placeholder="XL" size="7"> &nbsp; &nbsp; &nbsp;
+        XXL <input type="text" name="menXXL" placeholder="XXL" size="7"> &nbsp; &nbsp; &nbsp;
+        XXXL <input type="text" name="menXXXL" placeholder="XXXL" size="7"> &nbsp; &nbsp; &nbsp;
         <br> <br> <strong> WOMEN </strong>
         XS <input type="text" name="womenXS" placeholder="XS" size="7"> &nbsp; &nbsp; &nbsp;
         S <input type="text" name="womenS" placeholder="S" size="7"> &nbsp; &nbsp; &nbsp;
@@ -81,7 +82,8 @@
         &nbsp; &nbsp; &nbsp; &nbsp; kid 12 <input type="text" name="kid12" placeholder="kid12" size="7"> &nbsp; &nbsp;
         <br> <br>
 
-        <textarea rows="3" cols="50" name="commentField"  placeholder="Place for additional comments..."></textarea>
+        <textarea rows="2" cols="100" name="commentField"
+                  placeholder=" Please add delivery address                                   + Place for additional comments... "></textarea>
 
         <br>
         <button type="submit" class="registerbtn btn btn-md btn-warning">confirm</button>

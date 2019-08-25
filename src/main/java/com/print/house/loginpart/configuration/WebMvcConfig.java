@@ -1,4 +1,4 @@
-package com.print.house.loginPart.configuration;
+package com.print.house.loginpart.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

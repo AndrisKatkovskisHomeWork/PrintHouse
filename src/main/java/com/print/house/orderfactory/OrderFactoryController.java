@@ -1,7 +1,7 @@
-package com.print.house.orderFactory;
+package com.print.house.orderfactory;
 
 import com.print.house.color.ColorService;
-import com.print.house.manufacturerArticle.ManufacturerArticleService;
+import com.print.house.manufacturerarticle.ManufacturerArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

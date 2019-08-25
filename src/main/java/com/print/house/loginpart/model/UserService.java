@@ -1,4 +1,4 @@
-package com.print.house.loginPart.model;
+package com.print.house.loginpart.model;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

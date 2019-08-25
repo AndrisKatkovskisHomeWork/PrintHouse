@@ -1,4 +1,4 @@
-package com.print.house.loginPart.configuration;
+package com.print.house.loginpart.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

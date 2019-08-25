@@ -1,7 +1,7 @@
-package com.print.house.loginPart;
+package com.print.house.loginpart;
 
-import com.print.house.loginPart.model.User;
-import com.print.house.loginPart.model.UserService;
+import com.print.house.loginpart.model.User;
+import com.print.house.loginpart.model.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;

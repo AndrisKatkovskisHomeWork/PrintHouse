@@ -1,4 +1,4 @@
-package com.print.house.manufacturerArticle;
+package com.print.house.manufacturerarticle;
 
 import javax.persistence.*;
 

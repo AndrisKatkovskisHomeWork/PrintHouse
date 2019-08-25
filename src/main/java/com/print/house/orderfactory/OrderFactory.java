@@ -1,7 +1,7 @@
-package com.print.house.orderFactory;
+package com.print.house.orderfactory;
 
 import com.print.house.color.Color;
-import com.print.house.manufacturerArticle.ManufacturerArticle;
+import com.print.house.manufacturerarticle.ManufacturerArticle;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -14,9 +14,6 @@ public class OrderFactory {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_order_factory")
     private int id;
-
-//    @OneToOne
-//    private Day day;
 
     @OneToOne
     private Color color;

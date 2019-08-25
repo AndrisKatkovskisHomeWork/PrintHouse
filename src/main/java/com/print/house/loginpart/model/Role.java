@@ -1,4 +1,4 @@
-package com.print.house.loginPart.model;
+package com.print.house.loginpart.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

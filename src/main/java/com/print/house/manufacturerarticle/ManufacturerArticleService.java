@@ -1,4 +1,4 @@
-package com.print.house.manufacturerArticle;
+package com.print.house.manufacturerarticle;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
